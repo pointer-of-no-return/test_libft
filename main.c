@@ -6,7 +6,7 @@
 /*   By: lluque <lluque@student.42malaga.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:55:37 by lluque            #+#    #+#             */
-/*   Updated: 2023/09/17 15:50:10 by lluque           ###   ########.fr       */
+/*   Updated: 2023/09/18 17:01:46 by lluque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,37 @@
 #include "../repo_github/libft.h"
 #include "test_libft.h"
 
+void	ft_print_integer(void *integer)
+{
+	printf("\t\t\t\tEl entero es '%d'\n", *(int *)integer);
+}
+
+void	ft_lst_item_del(void *content)
+{
+	if (content == NULL)
+		return ;
+	free(content);
+}
+
+void	*ft_lst_item_cpy(void *content)
+{
+	void	*ret_val;
+
+	if (content == NULL)
+		return (NULL);
+	ret_val = malloc(sizeof (content));
+	*(int *)ret_val = *(int *)content;
+	return (ret_val);
+}
+
+/*
+void	*ft_add_thousand_to_integer(void *integer)
+{
+	*(int *)integer += 1000;
+	return (
+	//printf("\t\t\t\tEl entero es '%d'\n", *(int *)integer);
+}
+*/
 char	ft_prueba(unsigned int i, char c)
 {
 	if (i % 2 == 0)
@@ -71,6 +102,75 @@ int	main(int argc, char **argv)
 	itoa_nbr = ft_atoi(argv[3]);
 	printf("El string '%s' que pasado por ft_atoi se vuelve '%d' con ft_itoa se convierte en '%s'\n", argv[3], itoa_nbr, ft_itoa(itoa_nbr));
 	printf("\n");
+
+	printf("Ahora se probara el bonus\n");
+	int	*lst_contenido;
+	t_list	*lst_item;
+	t_list	*lst_first_item;
+	int	lst_i;
+	int	lst_contenido_temp;
+
+	lst_contenido = malloc(1 * sizeof (int));
+	*lst_contenido = 69;
+	lst_item = ft_lstnew(lst_contenido);
+	lst_first_item = lst_item;
+	printf("\tCreado el primer nodo '%lu' con contenido '%d'\n", (unsigned long)lst_first_item, *(int *)lst_first_item->content);
+	printf("\tLa lista tiene ahora '%d' elementos\n", ft_lstsize(lst_first_item));
+	lst_i = 1;
+	while (lst_i < 10)
+	{
+		lst_contenido_temp = *lst_contenido;
+		lst_contenido = malloc(1 * sizeof(int));
+		*lst_contenido = lst_contenido_temp + 10;
+		lst_item = ft_lstnew(lst_contenido);
+		printf("\tCreado el nodo '%lu' con contenido '%d'\n", (unsigned long)lst_item, *(int *)lst_item->content);
+		ft_lstadd_back(&lst_first_item, lst_item);
+		printf("\t\tAgregado  el nodo '%lu' al FINAL de la  lista '%lu'\n", (unsigned long)lst_item, (unsigned long)lst_first_item);
+		printf("\tLa lista tiene ahora '%d' elementos\n", ft_lstsize(lst_first_item));
+		lst_i++;
+	}
+
+	printf("\tAhora se añadirán elementos al inicio de la lista\n");
+	*lst_contenido = 59;
+	lst_i = 1;
+	while (lst_i < 10)
+	{
+		lst_contenido_temp = *lst_contenido;
+		lst_contenido = malloc(1 * sizeof(int));
+		*lst_contenido = lst_contenido_temp - 10;
+		lst_item = ft_lstnew(lst_contenido);
+		printf("\tCreado el nodo '%lu' con contenido '%d'\n", (unsigned long)lst_item, *(int *)lst_item->content);
+		ft_lstadd_front(&lst_first_item, lst_item);
+		printf("\t\tAgregado el nodo '%lu' al COMIENZO de la lista '%lu'\n", (unsigned long)lst_item, (unsigned long)lst_first_item);
+		printf("\tLa lista tiene ahora '%d' elementos\n", ft_lstsize(lst_first_item));
+		lst_i++;
+	}
+	printf("Ahora se iterara por todos los elementos imprimiendo el contenido\n");
+	ft_lstiter(lst_first_item, ft_print_integer);
+	/*
+	lst_i = 0;
+	lst_size = ft_lstsize(lst_first_item);
+	while (lst_i < lst_size)
+	{
+
+		lst_i++;
+	}
+*/
+	
+	printf("Ahora se creara una copia de la lista\n");
+	t_list	*new_list;
+
+	new_list = ft_lstmap(lst_first_item, ft_lst_item_cpy, ft_lst_item_del);
+	
+	printf("Este es el contenido de la lista original\n");
+	ft_lstiter(lst_first_item, ft_print_integer);
+	
+	printf("Este es el contenido de la nueva lista\n");
+	ft_lstiter(new_list, ft_print_integer);
+
+	printf("Ahora se borrara la nueva lista completamente\n");
+	ft_lstclear(&new_list, ft_lst_item_del);
+
 	return (0);
 }
 	/*

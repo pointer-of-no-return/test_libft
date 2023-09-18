@@ -6,7 +6,7 @@
 #    By: lluque <lluque@student.42malaga.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 14:27:23 by lluque            #+#    #+#              #
-#    Updated: 2023/09/17 15:51:25 by lluque           ###   ########.fr        #
+#    Updated: 2023/09/18 13:25:41 by lluque           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ all:$(NAME)
 # Como pre-requisitos tiene todos los archivos .o (valor de OBJ)
 # Si no los encuentra todos ejecuta la regla $(OBJ) antes
 
-$(NAME):$(OBJ) ../repo_github/libft.a
+$(NAME):$(OBJ) ../repo_github/libft.a ../repo_github/libft.h
 # ar $(AR_FLAGS) $(NAME) $(OBJ)
 	cc $(CC_FLAGS) $(OBJ) ../repo_github/libft.a -o $(NAME) 
 # En esta regla se usa pattern rule: TARGET: PATRÓN_DE_TARGETS: PATRÓN_DE REQS
