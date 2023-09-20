@@ -6,7 +6,7 @@
 #    By: lluque <lluque@student.42malaga.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 14:27:23 by lluque            #+#    #+#              #
-#    Updated: 2023/09/18 13:25:41 by lluque           ###   ########.fr        #
+#    Updated: 2023/09/21 00:31:19 by lluque           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ SRC = main.c \
 	  ft_test_isascii.c \
 	  ft_test_isprint.c \
 	  ft_test_atoi.c \
-	  ft_test_strlen.c #\
+	  ft_test_strlen.c \
+	  ft_print_memory.c \
+	  ft_ltoa.c #\
 	  ft_test_memset.c \
 	  ft_test_bzero.c \
 	  ft_test_memcpy.c \

@@ -6,7 +6,7 @@
 /*   By: lluque <lluque@student.42malaga.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:55:37 by lluque            #+#    #+#             */
-/*   Updated: 2023/09/18 17:01:46 by lluque           ###   ########.fr       */
+/*   Updated: 2023/09/21 00:27:59 by lluque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <stdlib.h>
 #include "../repo_github/libft.h"
 #include "test_libft.h"
+
+void	*ft_print_memory(void *addr, unsigned int size);
 
 void	ft_print_integer(void *integer)
 {
@@ -102,6 +104,11 @@ int	main(int argc, char **argv)
 	itoa_nbr = ft_atoi(argv[3]);
 	printf("El string '%s' que pasado por ft_atoi se vuelve '%d' con ft_itoa se convierte en '%s'\n", argv[3], itoa_nbr, ft_itoa(itoa_nbr));
 	printf("\n");
+
+	char 	buffer1[20];
+	char	buffer2[30];
+	ft_print_memory(buffer1, 20);
+	ft_print_memory(buffer2, 30);
 
 	printf("Ahora se probara el bonus\n");
 	int	*lst_contenido;

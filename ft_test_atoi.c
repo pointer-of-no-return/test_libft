@@ -6,7 +6,7 @@
 /*   By: lluque <lluque@student.42malaga.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 00:42:26 by lluque            #+#    #+#             */
-/*   Updated: 2023/09/17 13:10:55 by lluque           ###   ########.fr       */
+/*   Updated: 2023/09/20 10:58:33 by lluque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@
 void	ft_test_atoi(const char *str)
 {
 	printf("PRUEBA atoi con str = '%s'\n", str);
-	printf("\t original: \t\t%d\n", atoi(str));
-	printf("\t version ft:\t\t%d\n\n", ft_atoi(str));
+	printf("\t\toriginal: \t\t%d\n", atoi(str));
+	printf("\t\tversion ft:\t\t%d\n", ft_atoi(str));
+	if (atoi(str) - ft_atoi(str))
+		printf("**************** DISCREPANCIA ********************\n\n");
+	else
+		printf("\tTodo OK\n\n");
 }
 /*
 	int		sign;
