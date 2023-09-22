@@ -6,7 +6,7 @@
 /*   By: lluque <lluque@student.42malaga.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:14:35 by lluque            #+#    #+#             */
-/*   Updated: 2023/09/21 00:29:37 by lluque           ###   ########.fr       */
+/*   Updated: 2023/09/21 20:46:11 by lluque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	print_words(unsigned int byte, unsigned int size, void *addr)
 				ft_putstr_fd("  ", 1);
 			else
 			{
-				if (*((unsigned char *)addr + byte) < 10)
+				if (*((unsigned char *)addr + byte) < 16)
 					ft_putchar_fd('0', 1);
 				ft_putstr_fd(ft_itoa_b(*((unsigned char *)addr + byte), 16), 1);
 			}
