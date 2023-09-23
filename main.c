@@ -6,7 +6,7 @@
 /*   By: lluque <lluque@student.42malaga.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:55:37 by lluque            #+#    #+#             */
-/*   Updated: 2023/09/22 17:30:33 by lluque           ###   ########.fr       */
+/*   Updated: 2023/09/23 14:56:52 by lluque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <string.h>
 #include "../repo_github/libft.h"
 #include "test_libft.h"
+#define MAX_USR_INPUT_LINE_SIZE 100
 
 void	*ft_print_memory(void *addr, unsigned int size);
 
@@ -73,8 +74,278 @@ void	ft_printmem(void *ptr, size_t bytes)
 	}
 }
 */
+
+
 int	main(int argc, char **argv)
 {
+	char	usr_input[MAX_USR_INPUT_LINE_SIZE];
+	char	usr_input1[MAX_USR_INPUT_LINE_SIZE];
+	char	usr_input2[MAX_USR_INPUT_LINE_SIZE];
+//	char	usr_input3[MAX_USR_INPUT_LINE_SIZE];
+//	char	usr_input4[MAX_USR_INPUT_LINE_SIZE];
+
+
+	printf("Introduzca el nombre de la funcion original a comparar con la version ft_\n");
+	scanf("%s", usr_input);
+	if(!ft_strncmp("isalpha", usr_input, MAX_USR_INPUT_LINE_SIZE))
+	{
+		printf("\tProbando isalpha\n");
+		return (0);
+	}
+
+	if(!ft_strncmp("memcpy", usr_input, MAX_USR_INPUT_LINE_SIZE))
+	{
+		char	*lienzo_en_blanco;
+		//char	*lienzo_en_negro;
+						//    123456789012345678901234567890123456789
+		char	texto[] = "Habia una vez un barquito chiquitito";
+		char	texto2[] = "                                    ";
+
+		printf("\tProbando memcpy\n");
+		lienzo_en_blanco = ft_calloc(10, 16);
+		ft_print_memory(lienzo_en_blanco, 10 * 16);	
+		ft_memset(lienzo_en_blanco + 2 + 32, '@', 2);
+		ft_memset(lienzo_en_blanco + 2 + 32 + 16, '@', 2);
+		printf("\tPartiendo de esta area de memoria:\n");
+		ft_print_memory(lienzo_en_blanco, 10 * 16);
+		printf("\tEl memcpy produce:\n");
+		ft_memcpy(lienzo_en_blanco + 10 + 96, lienzo_en_blanco + 2 + 32, 2);
+		ft_memcpy(lienzo_en_blanco + 10 + 96 + 16, lienzo_en_blanco + 2 + 32 + 16, 2);
+		ft_print_memory(lienzo_en_blanco, 10 * 16);
+		
+		printf("Ahora probando con un string\n");
+		printf("\tEl origen:\n");
+		ft_print_memory(texto - 32, 100);
+		printf("\tEl destino:\n");
+		ft_print_memory(texto2 - 32, 100);
+		ft_memcpy(texto2 + 5, texto + 3, 15);
+		printf("\tEl resultado:\n");
+		ft_print_memory(texto2 - 32, 100);
+
+		printf("Y con un substring del string original\n");
+		printf("\tEl origen y destino (+5, 5 caracteres a copiar):\n");
+		ft_print_memory(texto - 32, 100);
+		ft_memcpy(texto + 5, texto, 5);
+		printf("\tEl resultado:\n");
+		ft_print_memory(texto - 32, 100);
+		return (0);
+	}
+
+
+	if(!ft_strncmp("memmove", usr_input, MAX_USR_INPUT_LINE_SIZE))
+	{
+						//    123456789012345678901234567890123456789
+		char	texto[] = "Habia una vez un barquito chiquitito";
+		char	texto2[] = "Habia una vez un barquito chiquitito";
+		char	texto3[] = "Habia una vez un barquito chiquitito";
+		char	texto4[] = "Habia una vez un barquito chiquitito";
+
+		printf("\tProbando memmove sin overlapping\n");
+		printf("\tEl origen:\n");
+		ft_print_memory(texto - 32, 100);
+		ft_memmove(texto + 5, texto, 5);
+		printf("\tEl resultado:\n");
+		ft_print_memory(texto - 32, 100);
+
+		printf("Probando memmove CON overlapping (destino antes de origen)\n");
+		ft_print_memory(texto2 - 32, 100);
+		ft_memmove(texto2, texto2 + 5, 10);
+		printf("\tEl resultado:\n");
+		ft_print_memory(texto2 - 32, 100);
+	
+		printf("Probando memmove CON overlapping (destino despues de origen)\n");
+		ft_print_memory(texto3 - 32, 100);
+		ft_memmove(texto3 + 5, texto3, 10);
+		printf("\tEl resultado:\n");
+		ft_print_memory(texto3 - 32, 100);
+
+		printf("Probando memmove CON overlapping TOTAL\n");
+		ft_print_memory(texto4 - 32, 100);
+		ft_memmove(texto4, texto4, sizeof (texto4));
+		printf("\tEl resultado:\n");
+		ft_print_memory(texto4 - 32, 100);
+
+		return (0);
+	}
+
+
+
+
+	if(!ft_strncmp("strchr", usr_input, MAX_USR_INPUT_LINE_SIZE))
+	{
+		char	*output;
+
+		printf("\tProbando strchr\n");
+		printf("\t\tPrototipo:\n");
+		printf("\t\tchar    *ft_strchr(const char *s, int c);\n");
+		printf("\t\tIntroduzca el primer argumento (un string o NULL)\n");
+		scanf("%s", usr_input1);
+		printf("\t\tRecibido '%s'\n", usr_input1);
+		printf("\t\tIntroduzca el segundo argumento (caracter no numerico o un entero)\n");
+		scanf("%s", usr_input2);
+		printf("\t\tRecibido '%s'\n", usr_input2);
+		if(!ft_strncmp("NULL", usr_input1, MAX_USR_INPUT_LINE_SIZE))
+		{
+			printf("\t\tEl primer argumento es un NULL\n");
+			if(ft_isdigit(usr_input2[0]))
+			{
+				printf("\t\tEl segundo argumento es un numero\n");
+				output = ft_strchr(NULL, ft_atoi(usr_input2));
+			}
+			else
+			{
+				printf("\t\tEl segundo argumento es un caracter\n");
+				output = ft_strchr(NULL, usr_input2[0]);
+			}
+		}
+		else
+		{
+			printf("\t\tEl primer argumento es un string\n");
+			if(ft_isdigit(usr_input2[0]))
+			{
+				printf("\t\tEl segundo argumento es un numero\n");
+				output = ft_strchr(usr_input1, ft_atoi(usr_input2));
+			}
+			else
+			{
+				printf("\t\tEl segundo argumento es un caracter\n");
+				output = ft_strchr(usr_input1, usr_input2[0]);
+			}
+		}
+		printf("\tAhora se imprime el resultado: '%llu'\n", (unsigned long long)output);
+		printf("\tQue seria el string: '%s'\n", output);
+		return (0);
+	}
+
+
+
+	if(!ft_strncmp("strrchr", usr_input, MAX_USR_INPUT_LINE_SIZE))
+	{
+		char	*output;
+
+		printf("\tProbando strrchr\n");
+		printf("\t\tPrototipo:\n");
+		printf("\t\tchar    *ft_strrchr(const char *s, int c);\n");
+		printf("\t\tIntroduzca el primer argumento (un string o NULL)\n");
+		scanf("%s", usr_input1);
+		printf("\t\tRecibido '%s'\n", usr_input1);
+		printf("\t\tIntroduzca el segundo argumento (caracter no numerico o un entero)\n");
+		scanf("%s", usr_input2);
+		printf("\t\tRecibido '%s'\n", usr_input2);
+		if(!ft_strncmp("NULL", usr_input1, MAX_USR_INPUT_LINE_SIZE))
+		{
+			printf("\t\tEl primer argumento es un NULL\n");
+			if(ft_isdigit(usr_input2[0]))
+			{
+				printf("\t\tEl segundo argumento es un numero\n");
+				output = ft_strrchr(NULL, ft_atoi(usr_input2));
+			}
+			else
+			{
+				printf("\t\tEl segundo argumento es un caracter\n");
+				output = ft_strrchr(NULL, usr_input2[0]);
+			}
+		}
+		else
+		{
+			printf("\t\tEl primer argumento es un string\n");
+			if(ft_isdigit(usr_input2[0]))
+			{
+				printf("\t\tEl segundo argumento es un numero\n");
+				output = ft_strrchr(usr_input1, ft_atoi(usr_input2));
+			}
+			else
+			{
+				printf("\t\tEl segundo argumento es un caracter\n");
+				output = ft_strrchr(usr_input1, usr_input2[0]);
+			}
+		}
+		printf("\tAhora se imprime el resultado: '%llu'\n", (unsigned long long)output);
+		printf("\tQue seria el string: '%s'\n", output);
+		return (0);
+	}
+
+
+
+
+
+	if(!ft_strncmp("split", usr_input, MAX_USR_INPUT_LINE_SIZE))
+	{
+		char	**output;
+
+		printf("\tProbando split\n");
+		printf("\t\tPrototipo:\n");
+		printf("\t\tchar    **ft_split(char const *s, char c);\n");
+		printf("\t\tIntroduzca el primer argumento (un string o NULL)\n");
+		scanf("%s", usr_input1);
+		printf("\t\tRecibido '%s'\n", usr_input1);
+		printf("\t\tIntroduzca el segundo argumento (caracter no numerico o un entero)\n");
+		scanf("%s", usr_input2);
+		printf("\t\tRecibido '%s'\n", usr_input2);
+		if(!ft_strncmp("NULL", usr_input1, MAX_USR_INPUT_LINE_SIZE))
+		{
+			printf("\t\tEl primer argumento es un NULL\n");
+			if(ft_isdigit(usr_input2[0]))
+			{
+				printf("\t\tEl segundo argumento es un numero\n");
+				output = ft_split(NULL, ft_atoi(usr_input2));
+			}
+			else
+			{
+				printf("\t\tEl segundo argumento es un caracter\n");
+				output = ft_split(NULL, usr_input2[0]);
+			}
+		}
+		else
+		{
+			printf("\t\tEl primer argumento es un string\n");
+			if(ft_isdigit(usr_input2[0]))
+			{
+				printf("\t\tEl segundo argumento es un numero\n");
+				output = ft_split(usr_input1, ft_atoi(usr_input2));
+			}
+			else
+			{
+				printf("\t\tEl segundo argumento es un caracter\n");
+				output = ft_split(usr_input1, usr_input2[0]);
+			}
+		}
+		int	i;
+		i = 0;
+		printf("\tAhora se imprime el resultado\n");
+		while (output[i] != NULL)
+		{
+			ft_putendl_fd(output[i], 1);
+			i++;
+		}
+		return (0);
+	}
+	printf("Prueba no implementada por los momentos\n");
+	return (0);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	if (argc != 4)
 	{
 		printf("Error en cantidad de parametros, debe ser:\n");
@@ -133,9 +404,6 @@ int	main(int argc, char **argv)
 	
 	char	*lienzo_en_blanco;
 	char	*lienzo_en_negro;
-	char    *block_calloc1;
-	char    *block_calloc2;
-	char    *block_calloc3;
 
 	lienzo_en_blanco = ft_calloc(10, 16);	// Ambas versiones dan un puntero válido con 0,0 x,0 0,y (por malloc
 										// La calloc original reserva e inicializa en bloques de 16 siempre
@@ -170,7 +438,7 @@ int	main(int argc, char **argv)
 	printf("Cuadrado blanco en lienzo negro (dir: '%#lx')\n", (long unsigned)lienzo_en_negro);
 	ft_print_memory(lienzo_en_negro, 10 * 16);
 	
-	printf("Memset con casos rars\n");
+	printf("Memset con casos raros\n");
 	//ft_memset(lienzo_en_blanco + 17, '*', 1);
 	//ft_memset(lienzo_en_blanco + 17, '*', 0);
 	printf("\tCaso 1:\n");
@@ -188,13 +456,19 @@ int	main(int argc, char **argv)
 	//ft_memset(NULL, '*', 5);						// Ambas versiones explotan con NULL
 	ft_print_memory(lienzo_en_blanco, 10 * 16);
 	
+
+
 	return (0);
+	char    *block_calloc1;
+	char    *block_calloc2;
+	char    *block_calloc3;
+
 	block_calloc2 = ft_calloc(30, 0);
 	block_calloc1 = ft_calloc(30, 0);
 	printf("Imprimiendo block_calloc1 (dir: '%#lx')\n", (long unsigned)block_calloc1);
 	ft_print_memory(block_calloc1, 30);
-	//block_calloc2 = malloc(30 * sizeof (char));
-	//ft_memset(block_calloc2, 64, 30);
+	block_calloc2 = malloc(30 * sizeof (char));
+	ft_memset(block_calloc2, 64, 30);
 	block_calloc3 = calloc(30, 1);
 	printf("Imprimiendo block_calloc3 (dir: '%#lx')\n", (long unsigned)block_calloc3);
 	ft_print_memory(block_calloc3, 30);
