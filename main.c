@@ -6,7 +6,7 @@
 /*   By: lluque <lluque@student.42malaga.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:55:37 by lluque            #+#    #+#             */
-/*   Updated: 2023/09/23 14:56:52 by lluque           ###   ########.fr       */
+/*   Updated: 2023/09/25 22:52:12 by lluque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	main(int argc, char **argv)
 	char	usr_input[MAX_USR_INPUT_LINE_SIZE];
 	char	usr_input1[MAX_USR_INPUT_LINE_SIZE];
 	char	usr_input2[MAX_USR_INPUT_LINE_SIZE];
-//	char	usr_input3[MAX_USR_INPUT_LINE_SIZE];
+	char	usr_input3[MAX_USR_INPUT_LINE_SIZE];
 //	char	usr_input4[MAX_USR_INPUT_LINE_SIZE];
 
 
@@ -167,6 +167,163 @@ int	main(int argc, char **argv)
 
 		return (0);
 	}
+
+	if(!ft_strncmp("strlcpy", usr_input, MAX_USR_INPUT_LINE_SIZE))
+	{
+		size_t	output;
+
+		printf("\tProbando strlcpy\n");
+		printf("\t\tPrototipo:\n");
+		printf("\t\tsize_t  ft_strlcpy(char *dst, const char *src, size_t dstsize);\n");
+		printf("\t\tIntroduzca el primer argumento (un string o NULL)\n");
+		scanf("%s", usr_input1);
+		printf("\t\tRecibido '%s'\n", usr_input1);
+		printf("\t\tIntroduzca el segundo argumento (un string o NULL)\n");
+		scanf("%s", usr_input2);
+		printf("\t\tRecibido '%s'\n", usr_input2);
+		printf("\t\tIntroduzca el tercer argumento (un size_t)\n");
+		scanf("%s", usr_input3);
+		printf("\t\tRecibido '%s'\n", usr_input3);
+		if(!ft_strncmp("NULL", usr_input1, MAX_USR_INPUT_LINE_SIZE))
+		{
+			printf("\t\tEl primer argumento es un NULL\n");
+			if(!ft_strncmp("NULL", usr_input2, MAX_USR_INPUT_LINE_SIZE))
+			{
+				printf("\t\tEl segundo argumento es un NULL\n");
+				output = ft_strlcpy(NULL, NULL, ft_atoi(usr_input3));
+				printf("\t\tEl retorno es %zu y el string destino queda como '%s'\n", output, usr_input1);
+			}
+			else
+			{
+				printf("\t\tEl segundo argumento es un string\n");
+				output = ft_strlcpy(NULL, usr_input2, ft_atoi(usr_input3));
+				printf("\t\tEl retorno es %zu y el string destino queda como '%s'\n", output, usr_input1);
+			}
+		}
+		else
+		{
+			printf("\t\tEl primer argumento es un string\n");
+			if(!ft_strncmp("NULL", usr_input2, MAX_USR_INPUT_LINE_SIZE))
+			{
+				printf("\t\tEl segundo argumento es un NULL\n");
+				output = ft_strlcpy(usr_input1, NULL, ft_atoi(usr_input3));
+				printf("\t\tEl retorno es %zu y el string destino queda como '%s'\n", output, usr_input1);
+			}
+			else
+			{
+				printf("\t\tEl segundo argumento es un string\n");
+				output = ft_strlcpy(usr_input1, usr_input2, ft_atoi(usr_input3));
+				printf("\t\tEl retorno es %zu y el string destino queda como '%s'\n", output, usr_input1);
+			}
+		}
+		return (0);
+	}
+
+	if(!ft_strncmp("strlcat", usr_input, MAX_USR_INPUT_LINE_SIZE))
+	{
+		size_t	output;
+
+		printf("\tProbando strlcat\n");
+		printf("\t\tPrototipo:\n");
+		printf("\t\tsize_t  ft_strlcat(char *dst, const char *src, size_t dstsize);\n");
+		printf("\t\tIntroduzca el primer argumento (un string o NULL)\n");
+		scanf("%s", usr_input1);
+		printf("\t\tRecibido '%s'\n", usr_input1);
+		printf("\t\tIntroduzca el segundo argumento (un string o NULL)\n");
+		scanf("%s", usr_input2);
+		printf("\t\tRecibido '%s'\n", usr_input2);
+		printf("\t\tIntroduzca el tercer argumento (un size_t)\n");
+		scanf("%s", usr_input3);
+		printf("\t\tRecibido '%s'\n", usr_input3);
+		if(!ft_strncmp("NULL", usr_input1, MAX_USR_INPUT_LINE_SIZE))
+		{
+			printf("\t\tEl primer argumento es un NULL\n");
+			if(!ft_strncmp("NULL", usr_input2, MAX_USR_INPUT_LINE_SIZE))
+			{
+				printf("\t\tEl segundo argumento es un NULL\n");
+				output = ft_strlcat(NULL, NULL, ft_atoi(usr_input3));
+				printf("\t\tEl retorno es %zu y el string destino queda como '%s'\n", output, usr_input1);
+			}
+			else
+			{
+				printf("\t\tEl segundo argumento es un string\n");
+				output = ft_strlcat(NULL, usr_input2, ft_atoi(usr_input3));
+				printf("\t\tEl retorno es %zu y el string destino queda como '%s'\n", output, usr_input1);
+			}
+		}
+		else
+		{
+			printf("\t\tEl primer argumento es un string\n");
+			if(!ft_strncmp("NULL", usr_input2, MAX_USR_INPUT_LINE_SIZE))
+			{
+				printf("\t\tEl segundo argumento es un NULL\n");
+				output = ft_strlcat(usr_input1, NULL, ft_atoi(usr_input3));
+				printf("\t\tEl retorno es %zu y el string destino queda como '%s'\n", output, usr_input1);
+			}
+			else
+			{
+				printf("\t\tEl segundo argumento es un string\n");
+				output = ft_strlcat(usr_input1, usr_input2, ft_atoi(usr_input3));
+				printf("\t\tEl retorno es %zu y el string destino queda como '%s'\n", output, usr_input1);
+			}
+		}
+		return (0);
+	}
+
+	if(!ft_strncmp("strnstr", usr_input, MAX_USR_INPUT_LINE_SIZE))
+	{
+		char	*output;
+
+		printf("\tProbando strnstr\n");
+		printf("\t\tPrototipo:\n");
+		printf("\t\tchar    *ft_strnstr(const char *haystack, const char *needle, size_t len);\n");
+		printf("\t\tIntroduzca el primer argumento (un string o NULL)\n");
+		scanf("%s", usr_input1);
+		printf("\t\tRecibido '%s'\n", usr_input1);
+		printf("\t\tIntroduzca el segundo argumento (un string o NULL)\n");
+		scanf("%s", usr_input2);
+		printf("\t\tRecibido '%s'\n", usr_input2);
+		printf("\t\tIntroduzca el tercer argumento (un size_t)\n");
+		scanf("%s", usr_input3);
+		printf("\t\tRecibido '%s'\n", usr_input3);
+		if(!ft_strncmp("NULL", usr_input1, MAX_USR_INPUT_LINE_SIZE))
+		{
+			printf("\t\tEl primer argumento es un NULL\n");
+			if(!ft_strncmp("NULL", usr_input2, MAX_USR_INPUT_LINE_SIZE))
+			{
+				printf("\t\tEl segundo argumento es un NULL\n");
+				output = ft_strnstr(NULL, NULL, ft_atoi(usr_input3));
+				printf("\t\tEl retorno es '%s'\n", output);
+			}
+			else
+			{
+				printf("\t\tEl segundo argumento es un string\n");
+				output = ft_strnstr(NULL, usr_input2, ft_atoi(usr_input3));
+				printf("\t\tEl retorno es '%s'\n", output);
+			}
+		}
+		else
+		{
+			printf("\t\tEl primer argumento es un string\n");
+			if(!ft_strncmp("NULL", usr_input2, MAX_USR_INPUT_LINE_SIZE))
+			{
+				printf("\t\tEl segundo argumento es un NULL\n");
+				output = ft_strnstr(usr_input1, NULL, ft_atoi(usr_input3));
+				printf("\t\tEl retorno es '%s'\n", output);
+			}
+			else
+			{
+				printf("\t\tEl segundo argumento es un string\n");
+				output = ft_strnstr(usr_input1, usr_input2, ft_atoi(usr_input3));
+				printf("\t\tEl retorno es '%s'\n", output);
+				printf("\t\t\tEl retorno de la funcion original es '%s'\n", strnstr(usr_input1, usr_input2, ft_atoi(usr_input3)));
+			}
+		}
+		return (0);
+	}
+
+
+
 
 
 
@@ -264,6 +421,42 @@ int	main(int argc, char **argv)
 		printf("\tQue seria el string: '%s'\n", output);
 		return (0);
 	}
+
+	if(!ft_strncmp("substr", usr_input, MAX_USR_INPUT_LINE_SIZE))
+	{
+		char	*output;
+
+		printf("\tProbando substr\n");
+		printf("\t\tPrototipo:\n");
+		printf("\t\tchar *ft_substr(char const *s, unsigned int start, size_t len);\n");
+		printf("\t\tIntroduzca el primer argumento (un string o NULL)\n");
+		scanf("%s", usr_input1);
+		printf("\t\tRecibido '%s'\n", usr_input1);
+		printf("\t\tIntroduzca el segundo argumento (un unsigned int)\n");
+		scanf("%s", usr_input2);
+		printf("\t\tRecibido '%s'\n", usr_input2);
+		printf("\t\tIntroduzca el tercer argumento (un size_t)\n");
+		scanf("%s", usr_input3);
+		printf("\t\tRecibido '%s'\n", usr_input3);
+		if(!ft_strncmp("NULL", usr_input1, MAX_USR_INPUT_LINE_SIZE))
+		{
+			printf("\t\tEl primer argumento es un NULL\n");
+			output = ft_substr(NULL, ft_atoi(usr_input2), ft_atoi(usr_input3));
+			printf("\tResulta el string: '%s'\n", output);
+		}
+		else
+		{
+			printf("\t\tEl primer argumento es un string\n");
+			output = ft_substr(usr_input1, ft_atoi(usr_input2), ft_atoi(usr_input3));
+			printf("\tResulta el string: '%s'\n", output);
+			printf("\tCuyo strlen es: '%zu'\n", ft_strlen(output));
+		}
+		return (0);
+	}
+
+
+
+
 
 
 
