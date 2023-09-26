@@ -6,7 +6,7 @@
 /*   By: lluque <lluque@student.42malaga.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:55:37 by lluque            #+#    #+#             */
-/*   Updated: 2023/09/25 22:52:12 by lluque           ###   ########.fr       */
+/*   Updated: 2023/09/26 20:53:57 by lluque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -322,12 +322,6 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 
-
-
-
-
-
-
 	if(!ft_strncmp("strchr", usr_input, MAX_USR_INPUT_LINE_SIZE))
 	{
 		char	*output;
@@ -373,8 +367,6 @@ int	main(int argc, char **argv)
 		printf("\tQue seria el string: '%s'\n", output);
 		return (0);
 	}
-
-
 
 	if(!ft_strncmp("strrchr", usr_input, MAX_USR_INPUT_LINE_SIZE))
 	{
@@ -454,7 +446,101 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 
+	if(!ft_strncmp("strjoin", usr_input, MAX_USR_INPUT_LINE_SIZE))
+	{
+		char	*output;
 
+		printf("\tProbando strjoin\n");
+		printf("\t\tPrototipo:\n");
+		printf("\t\tchar *ft_strjoin(char const *s1, char const *s2);\n");
+		printf("\t\tIntroduzca el primer argumento (un string o NULL)\n");
+		scanf("%s", usr_input1);
+		printf("\t\tRecibido '%s'\n", usr_input1);
+		printf("\t\tIntroduzca el segundo argumento (un string o NULL)\n");
+		scanf("%s", usr_input2);
+		printf("\t\tRecibido '%s'\n", usr_input2);
+		if(!ft_strncmp("NULL", usr_input1, MAX_USR_INPUT_LINE_SIZE))
+		{
+			printf("\t\tEl primer argumento es un NULL\n");
+			if(!ft_strncmp("NULL", usr_input2, MAX_USR_INPUT_LINE_SIZE))
+			{
+				printf("\t\tEl segundo argumento es un NULL\n");
+				output = ft_strjoin(NULL, NULL);
+				printf("\t\tEl retorno es '%s'\n", output);
+			}
+			else
+			{
+				printf("\t\tEl segundo argumento es un string\n");
+				output = ft_strjoin(NULL, usr_input2);
+				printf("\t\tEl retorno es '%s'\n", output);
+			}
+		}
+		else
+		{
+			printf("\t\tEl primer argumento es un string\n");
+			if(!ft_strncmp("NULL", usr_input2, MAX_USR_INPUT_LINE_SIZE))
+			{
+				printf("\t\tEl segundo argumento es un NULL\n");
+				output = ft_strjoin(usr_input1, NULL);
+				printf("\t\tEl retorno es '%s'\n", output);
+			}
+			else
+			{
+				printf("\t\tEl segundo argumento es un string\n");
+				output = ft_strjoin(usr_input1, usr_input2);
+				printf("\t\tEl retorno es '%s'\n", output);
+			}
+		}
+		return (0);
+	}
+
+	if(!ft_strncmp("strtrim", usr_input, MAX_USR_INPUT_LINE_SIZE))
+	{
+		char	*output;
+
+		printf("\tProbando strtrim\n");
+		printf("\t\tPrototipo:\n");
+		printf("\t\tchar *ft_strtrim(char const *s1, char const *set);\n");
+		printf("\t\tIntroduzca el primer argumento (un string o NULL)\n");
+		scanf("%s", usr_input1);
+		printf("\t\tRecibido '%s'\n", usr_input1);
+		printf("\t\tIntroduzca el segundo argumento (un string o NULL)\n");
+		scanf("%s", usr_input2);
+		printf("\t\tRecibido '%s'\n", usr_input2);
+		if(!ft_strncmp("NULL", usr_input1, MAX_USR_INPUT_LINE_SIZE))
+		{
+			printf("\t\tEl primer argumento es un NULL\n");
+			if(!ft_strncmp("NULL", usr_input2, MAX_USR_INPUT_LINE_SIZE))
+			{
+				printf("\t\tEl segundo argumento es un NULL\n");
+				output = ft_strtrim(NULL, NULL);
+				printf("\t\tEl retorno es '%s'\n", output);
+			}
+			else
+			{
+				printf("\t\tEl segundo argumento es un string\n");
+				output = ft_strtrim(NULL, usr_input2);
+				printf("\t\tEl retorno es '%s'\n", output);
+			}
+		}
+		else
+		{
+			printf("\t\tEl primer argumento es un string\n");
+			if(!ft_strncmp("NULL", usr_input2, MAX_USR_INPUT_LINE_SIZE))
+			{
+				printf("\t\tEl segundo argumento es un NULL\n");
+				output = ft_strtrim(usr_input1, NULL);
+				printf("\t\tEl retorno es '%s'\n", output);
+			}
+			else
+			{
+				printf("\t\tEl segundo argumento es un string\n");
+				output = ft_strtrim(usr_input1, usr_input2);
+				printf("\t\tEl retorno es '%s'\n", output);
+			}
+		}
+		return (0);
+	}
 
 
 
