@@ -6,7 +6,7 @@
 /*   By: lluque <lluque@student.42malaga.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:55:37 by lluque            #+#    #+#             */
-/*   Updated: 2023/09/26 20:53:57 by lluque           ###   ########.fr       */
+/*   Updated: 2023/09/27 23:24:55 by lluque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,6 +235,15 @@ int	main(int argc, char **argv)
 		printf("\t\tIntroduzca el tercer argumento (un size_t)\n");
 		scanf("%s", usr_input3);
 		printf("\t\tRecibido '%s'\n", usr_input3);
+	
+
+		char dest[30]; memset(dest, 0, 30);
+		char * src = (char *)"AAAAAAAAA";
+		int retorno;
+		memset(dest, 'C', 5);
+		retorno = ft_strlcat(dest, src, -1);
+		printf("El destino queda '%s' y el retorno '%d'\n", dest, retorno);
+	
 		if(!ft_strncmp("NULL", usr_input1, MAX_USR_INPUT_LINE_SIZE))
 		{
 			printf("\t\tEl primer argumento es un NULL\n");
