@@ -6,14 +6,16 @@
 /*   By: lluque <lluque@student.42malaga.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:55:37 by lluque            #+#    #+#             */
-/*   Updated: 2023/09/27 23:24:55 by lluque           ###   ########.fr       */
+/*   Updated: 2023/09/28 14:37:21 by lluque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../repo_github/libft.h"
+#include <bsd/bsd.h>
+//#include "../repo_github/libft.h"
+#include "../repo1/libft.h"
 #include "test_libft.h"
 #define MAX_USR_INPUT_LINE_SIZE 100
 
@@ -325,7 +327,7 @@ int	main(int argc, char **argv)
 				printf("\t\tEl segundo argumento es un string\n");
 				output = ft_strnstr(usr_input1, usr_input2, ft_atoi(usr_input3));
 				printf("\t\tEl retorno es '%s'\n", output);
-				printf("\t\t\tEl retorno de la funcion original es '%s'\n", strnstr(usr_input1, usr_input2, ft_atoi(usr_input3)));
+				//printf("\t\t\tEl retorno de la funcion original es '%s'\n", strnstr(usr_input1, usr_input2, ft_atoi(usr_input3)));
 			}
 		}
 		return (0);
