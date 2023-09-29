@@ -6,7 +6,7 @@
 #    By: lluque <lluque@student.42malaga.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 14:27:23 by lluque            #+#    #+#              #
-#    Updated: 2023/09/28 14:37:06 by lluque           ###   ########.fr        #
+#    Updated: 2023/09/29 13:16:16 by lluque           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,11 +94,11 @@ all:$(NAME)
 # Como pre-requisitos tiene todos los archivos .o (valor de OBJ)
 # Si no los encuentra todos ejecuta la regla $(OBJ) antes
 
-#$(NAME):$(OBJ) ../repo_github/libft.a ../repo_github/libft.h
-$(NAME):$(OBJ) ../repo1/libft.a ../repo1/libft.h
+$(NAME):$(OBJ) ../repo_github/libft.a ../repo_github/libft.h
+#$(NAME):$(OBJ) ../repo1/libft.a ../repo1/libft.h
 # ar $(AR_FLAGS) $(NAME) $(OBJ)
-#	cc $(CC_FLAGS) $(OBJ) ../repo_github/libft.a -o $(NAME) 
-	cc $(CC_FLAGS) $(OBJ) ../repo1/libft.a -o $(NAME) 
+	cc $(CC_FLAGS) $(OBJ) ../repo_github/libft.a -o $(NAME) 
+#	cc $(CC_FLAGS) $(OBJ) ../repo1/libft.a -o $(NAME) 
 # En esta regla se usa pattern rule: TARGET: PATRÓN_DE_TARGETS: PATRÓN_DE REQS
 # Es decir, para cada .o en OBJ se tiene como requisito su correspondiente .c
 # (este último no es una regla sino un archivo: cada .c)

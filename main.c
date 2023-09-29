@@ -6,16 +6,16 @@
 /*   By: lluque <lluque@student.42malaga.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:55:37 by lluque            #+#    #+#             */
-/*   Updated: 2023/09/28 14:37:21 by lluque           ###   ########.fr       */
+/*   Updated: 2023/09/29 21:59:55 by lluque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <bsd/bsd.h>
-//#include "../repo_github/libft.h"
-#include "../repo1/libft.h"
+//#include <bsd/bsd.h>
+#include "../repo_github/libft.h"
+//#include "../repo1/libft.h"
 #include "test_libft.h"
 #define MAX_USR_INPUT_LINE_SIZE 100
 
@@ -278,6 +278,22 @@ int	main(int argc, char **argv)
 				printf("\t\tEl retorno es %zu y el string destino queda como '%s'\n", output, usr_input1);
 			}
 		}
+		return (0);
+	}
+
+	if(!ft_strncmp("itoa", usr_input, MAX_USR_INPUT_LINE_SIZE))
+	{
+		char	*output;
+
+		printf("\tProbando itoa\n");
+		printf("\t\tPrototipo:\n");
+		printf("\t\tchar *ft_itoa(int n);\n");
+		printf("\t\tIntroduzca el primer argumento (un entero entre -2147483648 y 2147483647)\n");
+		scanf("%s", usr_input1);
+		printf("\t\tRecibido '%s'\n", usr_input1);
+		printf("\t\t\t(filtrado por ft_atoi: %i)\n", ft_atoi(usr_input1));
+		output = ft_itoa(ft_atoi(usr_input1));
+		printf("\t\tEl retorno es '%s'\n", output);
 		return (0);
 	}
 

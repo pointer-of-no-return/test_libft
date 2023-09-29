@@ -6,7 +6,7 @@
 /*   By: lluque <lluque@student.42malaga.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 00:43:09 by lluque            #+#    #+#             */
-/*   Updated: 2023/09/21 00:31:50 by lluque           ###   ########.fr       */
+/*   Updated: 2023/09/29 22:20:03 by lluque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_ltoa_b(long n, unsigned int base)
 	int		size;
 	int		i;
 	int		is_negative;
-	char	*sym_table;
+	char	sym_table[16];
 
 	size = ft_size_str_for_decl(n, base, 1);
 	ret_val = malloc(size * sizeof (char));
@@ -58,7 +58,7 @@ char	*ft_ltoa_b(long n, unsigned int base)
 	is_negative = 0;
 	if (n < 0)
 		is_negative = 1;
-	sym_table = ft_get_sym_table_base(base);
+	ft_get_sym_table(sym_table);
 	while ((!is_negative && i >= 0) || (is_negative && i > 0))
 	{
 		ret_val[i] = ft_conv_less_sig_digl(&n, base, sym_table);
@@ -67,7 +67,6 @@ char	*ft_ltoa_b(long n, unsigned int base)
 	if (is_negative)
 		ret_val[0] = '-';
 	ret_val[size - 1] = '\0';
-	free(sym_table);
 	return (ret_val);
 }
 
