@@ -6,7 +6,7 @@
 /*   By: lluque <lluque@student.42malaga.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:55:37 by lluque            #+#    #+#             */
-/*   Updated: 2023/09/29 21:59:55 by lluque           ###   ########.fr       */
+/*   Updated: 2023/09/30 18:41:27 by lluque           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -294,6 +294,25 @@ int	main(int argc, char **argv)
 		printf("\t\t\t(filtrado por ft_atoi: %i)\n", ft_atoi(usr_input1));
 		output = ft_itoa(ft_atoi(usr_input1));
 		printf("\t\tEl retorno es '%s'\n", output);
+		return (0);
+	}
+
+	if(!ft_strncmp("putnbr_fd", usr_input, MAX_USR_INPUT_LINE_SIZE))
+	{
+		printf("\tProbando putnbr_fd\n");
+		printf("\t\tPrototipo:\n");
+		printf("\t\tvoid    ft_putnbr_fd(int n, int fd)\n");
+		printf("\t\tIntroduzca el primer argumento (un entero entre -2147483648 y 2147483647)\n");
+		scanf("%s", usr_input1);
+		printf("\t\tRecibido '%s'\n", usr_input1);
+		printf("\t\t\t(filtrado por ft_atoi: %i)\n", ft_atoi(usr_input1));
+		printf("\t\tIntroduzca el segundo argumento (un entero para file descriptor (1 es STDOUT_FILENO)\n");
+		scanf("%s", usr_input2);
+		printf("\t\tRecibido '%s'\n", usr_input2);
+		printf("\t\t\t(filtrado por ft_atoi: %i)\n", ft_atoi(usr_input2));
+		//printf("\t\t\t\t>>>>>>>>>");
+		ft_putnbr_fd(ft_atoi(usr_input1), ft_atoi(usr_input2));
+		printf("\n\ntan-tan\n\n");
 		return (0);
 	}
 
